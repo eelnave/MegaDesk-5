@@ -12,9 +12,37 @@ namespace MegaDesk_3_EvanPeterson
 {
     public partial class DisplayQuote : Form
     {
-        public DisplayQuote()
+        private DeskQuote _quote;
+        private MainMenu _mainMenu;
+
+        public DisplayQuote(DeskQuote quote, object tag)
         {
             InitializeComponent();
+            _quote = quote;
+            _mainMenu = (MainMenu)tag;
+        }
+
+        private void DisplayQuote_Load(object sender, EventArgs e)
+        {
+            quoteResult.Text = "Your quote is: $" + _quote.QuoteCost.ToString();
+        }
+
+        private void DisplayQuote_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _mainMenu.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _mainMenu.Show();
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var addQuote = (addForm)Tag;
+            addQuote.Show();
+            Close();
         }
     }
 }

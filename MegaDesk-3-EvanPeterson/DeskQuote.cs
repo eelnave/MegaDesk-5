@@ -13,7 +13,7 @@ namespace MegaDesk_3_EvanPeterson
         public static int RushDays { get; set; }
         public string Name { get; set; }
         public DateTime QuoteDate { get; set; }
-        private decimal QuoteCost { get; set; }
+        public decimal QuoteCost { get; set; }
 
         public DeskQuote(Desk desk, int rushDays, string name, DateTime quoteDate)
         {
@@ -126,7 +126,7 @@ namespace MegaDesk_3_EvanPeterson
 
         public string CsvString()
         {
-            return $"{RushDays}, {Name}, {QuoteDate}, {QuoteCost}";
+            return $"{RushDays},{Name},{QuoteDate},{QuoteCost}";
         }
     }
 }

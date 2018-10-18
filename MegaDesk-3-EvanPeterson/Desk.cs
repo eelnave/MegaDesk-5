@@ -37,7 +37,7 @@ namespace MegaDesk_3_EvanPeterson
 
         public string CsvString()
         {
-            return $"{DeskId}, {Width}, {Depth}, {Drawers}, {Material}";
+            return $"{DeskId},{Width},{Depth},{Drawers},{Material},";
         }
     }
 }

@@ -63,11 +63,15 @@ namespace MegaDesk_3_EvanPeterson
             Desk desk = new Desk((int)widthNumberBox.Value, (int)depthNumberBox.Value, int.Parse(drawerBox.Text), (SurfaceMaterial)Enum.Parse(typeof(SurfaceMaterial), materialBox.Text));
             DeskQuote quote = new DeskQuote(desk, int.Parse(rushBox.Text), nameBox.Text, DateTime.Now);
             _writeQuote(quote, desk);
+
+            DisplayQuote displayQuote = new DisplayQuote(quote, Tag) { Tag = this };
+            displayQuote.Show(this);
+            Hide();
         }
 
-        private void _writeQuote (DeskQuote quote, Desk desk)
+        private void _writeQuote(DeskQuote quote, Desk desk)
         {
-            StreamWriter writer = new StreamWriter("quotes.txt");
+            StreamWriter writer = new StreamWriter(path: "quotes.txt", append: true);
             writer.Write(desk.CsvString());
             writer.WriteLine(quote.CsvString());
             writer.Close();

@@ -45,10 +45,7 @@ namespace MegaDesk_3_EvanPeterson
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            SearchQuotes searchQuotes = new SearchQuotes
-            {
-                Tag = this
-            };
+            SearchQuotes searchQuotes = new SearchQuotes { Tag = this };
             searchQuotes.Show(this);
             Hide();
         }
