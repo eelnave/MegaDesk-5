@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +17,14 @@ namespace MegaDesk_3_EvanPeterson
         public DateTime QuoteDate { get; set; }
         public decimal QuoteCost { get; set; }
 
-        public DeskQuote(Desk desk, int rushDays, string name, DateTime quoteDate)
+       public DeskQuote(Desk desk, int rushDays, string name, DateTime quoteDate)
         {
             Desk = desk;
             RushDays = rushDays;
             Name = name;
             QuoteDate = quoteDate;
             QuoteCost = CalculateQuote(Desk);
+
         }
 
         public static decimal CalculateQuote(Desk desk)
@@ -122,12 +125,14 @@ namespace MegaDesk_3_EvanPeterson
                 int area = width * depth;
                 return area;
             }
+
         }
 
         public string CsvString()
         {
-            return $"{RushDays},{Name},{QuoteDate},{QuoteCost}";
+            return $"{RushDays},{Name},{QuoteDate},{QuoteCost},{Desk.DeskId}";
         }
+        
     }
 }
 
