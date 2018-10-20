@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MegaDesk_3_EvanPeterson
 {
@@ -81,9 +82,23 @@ namespace MegaDesk_3_EvanPeterson
 
             decimal RushCost(int RushDays, int Area)
             {
-                decimal[,] CostArray =new decimal[3,3] {{ 60, 70, 80 },
-                                                        { 40, 50, 60 },
-                                                        { 30, 35, 40 } };
+                decimal[,] CostArray = new decimal[3, 3];
+                using (StreamReader reader = new StreamReader("rushOrderPrices.txt"))
+                {
+                    int i, j;
+                    i = 0;
+                    j = 0;
+                    while (reader.EndOfStream == false)
+                    {
+                        CostArray[i, j] = decimal.Parse(reader.ReadLine());
+                        j++;
+                        if (j == 3)
+                        {
+                            i++;
+                            j = 0;
+                        }
+                    }
+                }
 
                 int x;
                 int y;

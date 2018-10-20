@@ -16,7 +16,7 @@ namespace MegaDesk_3_EvanPeterson
         Laminate
     }
 
-    public class Desk
+    public struct Desk
     {
         public Guid DeskId { get; set; }
         public int Width { get; set; }
