@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace MegaDesk_3_EvanPeterson
 {
@@ -71,10 +72,19 @@ namespace MegaDesk_3_EvanPeterson
 
         private void _writeQuote(DeskQuote quote, Desk desk)
         {
+
             StreamWriter writer = new StreamWriter(path: "quotes.txt", append: true);
             writer.Write(desk.CsvString());
             writer.WriteLine(quote.CsvString());
             writer.Close();
+            //trying to write a json file
+            string jsonQuote = JsonConvert.SerializeObject(quote);
+            
+            File.WriteAllText("jsonfile.json",jsonQuote);
+            //Console.WriteLine(jsonQuote);
+            StreamWriter jsonWrite = new StreamWriter(path: "jsonfile.json");
+            jsonWrite.Write(jsonQuote);
+            jsonWrite.Close();
         }
     }
 }
