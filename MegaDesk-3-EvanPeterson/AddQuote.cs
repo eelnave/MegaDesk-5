@@ -44,7 +44,7 @@ namespace MegaDesk_3_EvanPeterson
 
         private void AddQuote_Load(object sender, EventArgs e)
         {
-            List<SurfaceMaterial> enumList = Enum.GetValues(typeof(SurfaceMaterial)).Cast<SurfaceMaterial>().ToList(); ;
+            List<Desk.SurfaceMaterial> enumList = Enum.GetValues(typeof(Desk.SurfaceMaterial)).Cast<Desk.SurfaceMaterial>().ToList(); ;
             materialBox.DataSource = enumList;
             int[] drawerNum = { 0, 1, 2, 3, 4, 5, 6, 7 };
             drawerBox.DataSource = drawerNum;
@@ -54,37 +54,37 @@ namespace MegaDesk_3_EvanPeterson
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Desk desk = new Desk((int)widthNumberBox.Value, (int)depthNumberBox.Value, int.Parse(drawerBox.Text), (SurfaceMaterial)Enum.Parse(typeof(SurfaceMaterial), materialBox.Text));
+            Desk desk = new Desk((int)widthNumberBox.Value, (int)depthNumberBox.Value, int.Parse(drawerBox.Text), (Desk.SurfaceMaterial)Enum.Parse(typeof(Desk.SurfaceMaterial), materialBox.Text));
             DeskQuote quote = new DeskQuote(desk, int.Parse(rushBox.Text), nameBox.Text, DateTime.Now);
             quoteTextBox.Text = DeskQuote.CalculateQuote(desk).ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Desk desk = new Desk((int)widthNumberBox.Value, (int)depthNumberBox.Value, int.Parse(drawerBox.Text), (SurfaceMaterial)Enum.Parse(typeof(SurfaceMaterial), materialBox.Text));
+            Desk desk = new Desk((int)widthNumberBox.Value, (int)depthNumberBox.Value, int.Parse(drawerBox.Text), (Desk.SurfaceMaterial)Enum.Parse(typeof(Desk.SurfaceMaterial), materialBox.Text));
             DeskQuote quote = new DeskQuote(desk, int.Parse(rushBox.Text), nameBox.Text, DateTime.Now);
-            _writeQuote(quote, desk);
+            _writeQuote(quote);
 
             DisplayQuote displayQuote = new DisplayQuote(quote, Tag) { Tag = this };
             displayQuote.Show(this);
             Hide();
         }
 
-        private void _writeQuote(DeskQuote quote, Desk desk)
+        private void _writeQuote(DeskQuote quote)
         {
-
-            StreamWriter writer = new StreamWriter(path: "quotes.txt", append: true);
-            writer.Write(desk.CsvString());
-            writer.WriteLine(quote.CsvString());
-            writer.Close();
-            //trying to write a json file
-            string jsonQuote = JsonConvert.SerializeObject(quote);
-            
-            File.WriteAllText("jsonfile.json",jsonQuote);
-            //Console.WriteLine(jsonQuote);
-            StreamWriter jsonWrite = new StreamWriter(path: "jsonfile.json");
-            jsonWrite.Write(jsonQuote);
-            jsonWrite.Close();
+            var jsonFile = @"jsonfile.json";
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+            if (File.Exists(jsonFile))
+            {
+                using (StreamReader streamreader = new StreamReader(jsonFile))
+                {
+                    string quotes = streamreader.ReadToEnd();
+                    deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                }
+            }
+            deskQuotes.Add(quote);
+            string jsonQuote = JsonConvert.SerializeObject(deskQuotes, Formatting.Indented);
+            File.WriteAllText(jsonFile, jsonQuote);
         }
     }
 }

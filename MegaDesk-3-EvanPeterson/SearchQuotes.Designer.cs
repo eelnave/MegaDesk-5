@@ -32,15 +32,6 @@
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.custName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quoteDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deskWidth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deskDepth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deskDrawers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deskMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rushOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quotePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,16 +48,6 @@
             // dataGrid
             // 
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.custName,
-            this.quoteDate,
-            this.deskWidth,
-            this.deskDepth,
-            this.deskDrawers,
-            this.deskMaterial,
-            this.rushOrder,
-            this.quotePrice,
-            this.totalCost});
             this.dataGrid.Location = new System.Drawing.Point(11, 73);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.Size = new System.Drawing.Size(944, 336);
@@ -90,51 +71,6 @@
             this.label1.Size = new System.Drawing.Size(48, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Filter:";
-            // 
-            // custName
-            // 
-            this.custName.HeaderText = "Quote ID";
-            this.custName.Name = "custName";
-            // 
-            // quoteDate
-            // 
-            this.quoteDate.HeaderText = "Desk Width";
-            this.quoteDate.Name = "quoteDate";
-            // 
-            // deskWidth
-            // 
-            this.deskWidth.HeaderText = "Desk Depth";
-            this.deskWidth.Name = "deskWidth";
-            // 
-            // deskDepth
-            // 
-            this.deskDepth.HeaderText = "Number of Drawers";
-            this.deskDepth.Name = "deskDepth";
-            // 
-            // deskDrawers
-            // 
-            this.deskDrawers.HeaderText = "Desk Material";
-            this.deskDrawers.Name = "deskDrawers";
-            // 
-            // deskMaterial
-            // 
-            this.deskMaterial.HeaderText = "Rush Order";
-            this.deskMaterial.Name = "deskMaterial";
-            // 
-            // rushOrder
-            // 
-            this.rushOrder.HeaderText = "Customer Name";
-            this.rushOrder.Name = "rushOrder";
-            // 
-            // quotePrice
-            // 
-            this.quotePrice.HeaderText = "Quote Date";
-            this.quotePrice.Name = "quotePrice";
-            // 
-            // totalCost
-            // 
-            this.totalCost.HeaderText = "Quote Price";
-            this.totalCost.Name = "totalCost";
             // 
             // SearchQuotes
             // 
@@ -161,14 +97,5 @@
         private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quoteDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deskWidth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deskDepth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deskDrawers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn deskMaterial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rushOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quotePrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalCost;
     }
 }

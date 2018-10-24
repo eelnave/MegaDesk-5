@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.cancelViewQuoteButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // cancelViewQuoteButton
             // 
-            this.cancelViewQuoteButton.Location = new System.Drawing.Point(365, 415);
+            this.cancelViewQuoteButton.Location = new System.Drawing.Point(366, 415);
             this.cancelViewQuoteButton.Name = "cancelViewQuoteButton";
             this.cancelViewQuoteButton.Size = new System.Drawing.Size(75, 23);
             this.cancelViewQuoteButton.TabIndex = 0;
@@ -41,15 +43,25 @@
             this.cancelViewQuoteButton.UseVisualStyleBackColor = true;
             this.cancelViewQuoteButton.Click += new System.EventHandler(this.cancelViewQuoteButton_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(800, 409);
+            this.dataGridView1.TabIndex = 1;
+            // 
             // ViewAllQuotes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cancelViewQuoteButton);
             this.Name = "ViewAllQuotes";
             this.Text = "ViewAllQuotes";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewAllQuotes_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -57,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Button cancelViewQuoteButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

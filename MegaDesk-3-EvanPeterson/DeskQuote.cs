@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace MegaDesk_3_EvanPeterson
 {
@@ -60,19 +59,19 @@ namespace MegaDesk_3_EvanPeterson
                 return drawers * 50;
             }
 
-            decimal SurfaceMaterialCost(SurfaceMaterial material)
+            decimal SurfaceMaterialCost(Desk.SurfaceMaterial material)
             {
                 switch (material)
                 {
-                    case SurfaceMaterial.Laminate:
+                    case Desk.SurfaceMaterial.Laminate:
                         return 100M;
-                    case SurfaceMaterial.Oak:
+                    case Desk.SurfaceMaterial.Oak:
                         return 200M;
-                    case SurfaceMaterial.Pine:
+                    case Desk.SurfaceMaterial.Pine:
                         return 50M;
-                    case SurfaceMaterial.Rosewood:
+                    case Desk.SurfaceMaterial.Rosewood:
                         return 300M;
-                    case SurfaceMaterial.Veneer:
+                    case Desk.SurfaceMaterial.Veneer:
                         return 125M;
                     default:
                         MessageBox.Show("Invalid Material!",
